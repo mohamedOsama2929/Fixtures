@@ -11,7 +11,7 @@ import com.carefer.matches.domain.entity.response.RemoteMatchesItem
 import com.carefer.matches.domain.entity.response.RemoteScore
 import javax.inject.Inject
 
-class FixtureMapper @Inject constructor() :
+class MatchMapper @Inject constructor() :
     ModelMapper<RemoteMatchesItem, MatchItem> {
     override fun convert(from: RemoteMatchesItem?): MatchItem {
         return from?.let {

@@ -24,6 +24,8 @@ class MatchesFragment :
 
     private val matchesAdapter = MatchesAdapter(::onFavOnClicked)
     private var favMatchesList: MutableList<String> = mutableListOf()
+    private var matchesList: MutableList<MatchItem> = mutableListOf()
+
     override fun showLoading(show: Boolean, isShimmer: Boolean) {
         super.showLoading(show, isShimmer)
         fragmentHelper.handleShimmerLoading(show, isShimmer, binding)
@@ -38,11 +40,29 @@ class MatchesFragment :
         toolbarListener?.hideActivityToolbar()
         super.onViewCreated(view, savedInstanceState)
         viewModel.handelViewIntent()
-        collectFixturesList()
+        collectMatchesList()
         collectFavoriteMatches()
         viewModel.send(MatchesIntent.GetFavouredMatchesList)
+        initViews()
+    }
 
+    private fun initViews() {
+        binding.switchUnReadOnly.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                matchesAdapter.apply {
+                    clear()
+                    submitList(fragmentHelper.getFavMatches(matchesList))
+                }
 
+            } else {
+                matchesAdapter.apply {
+                    clear()
+                    submitList(matchesList)
+                    fragmentHelper.handleScrollToTodayItem(binding, matchesList)
+                }
+
+            }
+        }
     }
 
     private fun collectFavoriteMatches() {
@@ -54,11 +74,12 @@ class MatchesFragment :
 
     }
 
-    private fun collectFixturesList() {
-        viewModel.getFixturesListStateFlow.asLiveData().observe(viewLifecycleOwner) {
+    private fun collectMatchesList() {
+        viewModel.getMatchesListStateFlow.asLiveData().observe(viewLifecycleOwner) {
             when (it) {
                 is ApiState.Success -> {
                     setMatchesList(it.successData, favMatchesList)
+                    matchesList = it.successData.toMutableList()
                 }
 
                 else -> {}

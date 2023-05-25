@@ -45,4 +45,8 @@ class MatchesFragmentHelper @Inject constructor() : BaseUiHelper() {
 
 
     }
+
+    fun getFavMatches(matchesList: MutableList<MatchItem>): MutableList<MatchItem>? {
+        return matchesList.filter { it.isFavorite }.toMutableList()
+    }
 }

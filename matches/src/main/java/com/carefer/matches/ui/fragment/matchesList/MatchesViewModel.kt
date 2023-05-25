@@ -33,7 +33,7 @@ class MatchesViewModel @Inject constructor(
         when (it) {
 
             is MatchesIntent.GetMatchesList -> {
-                getFixturesList(it.id)
+                getMatchesList(it.id)
             }
 
             is MatchesIntent.GetFavouredMatchesList -> {
@@ -60,13 +60,13 @@ class MatchesViewModel @Inject constructor(
         }
     }
 
-    private val _getFixturesListStateFlow =
+    private val _getMatchesListStateFlow =
         MutableStateFlow<ApiState<List<MatchItem>>>(ApiState.Idle)
-    val getFixturesListStateFlow: StateFlow<ApiState<List<MatchItem>>>
-        get() = _getFixturesListStateFlow
+    val getMatchesListStateFlow: StateFlow<ApiState<List<MatchItem>>>
+        get() = _getMatchesListStateFlow
 
-    private fun getFixturesList(id: String) {
-        callApiWithApiState(_getFixturesListStateFlow, isShimmer = true) {
+    private fun getMatchesList(id: String) {
+        callApiWithApiState(_getMatchesListStateFlow, isShimmer = true) {
             getMatchesListUseCase.executeApiState(
                 MatchesListQuery(id),
                 it

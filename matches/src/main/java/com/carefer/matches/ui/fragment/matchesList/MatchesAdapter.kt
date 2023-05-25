@@ -63,4 +63,5 @@ class MatchesAdapter(
         tvHeader.text = headerTitle
         tvHeader.isVisible = true
     }
+
 }
