@@ -1,4 +1,4 @@
 rootProject.name = "carefer"
 include ':app'
 include ':core'
-include ':fixtures'
+include ':matches'

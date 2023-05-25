@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="latest">آخر الإعلانات</string>
-    <string name="favourites">المفضلة</string>
-    <string name="anncouncment_title">إعلانات التواصل الداخلي</string>
-    <string name="new_">جديد</string>
-    <string name="priorities">الاهميه:</string>
-    <string name="link">الملفات المرفقة</string>
-</resources>
