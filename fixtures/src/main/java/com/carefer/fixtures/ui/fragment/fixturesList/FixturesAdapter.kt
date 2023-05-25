@@ -1,7 +1,6 @@
 package com.carefer.fixtures.ui.fragment.fixturesList
 
 import android.content.Context
-import android.util.Log
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.carefer.core.base.adapter.diffutilsAdapter.BaseRecyclerAdapter
@@ -28,7 +27,6 @@ class FixturesAdapter(
         binding.run {
             tvHomeTeamName.text = item.homeTeam
             tvAwayTeamName.text = item.awayTeam
-            Log.e("TAG", "bind: " + item.score)
             tvScore.text = item.score
             tvTime.text = item.matchTime
             tvScore.isVisible = item.matchStatus == MatchStatus.FINISHED

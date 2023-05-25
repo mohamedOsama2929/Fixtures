@@ -29,7 +29,7 @@ class FixtureMapper @Inject constructor() :
                 matchStatus = getMatchStatus(from.status.orEmpty()),
                 date = it.utcDate?.let { date ->
                     changeDateFormat(date, "yyyy-MM-dd'T'HH:mm:ss'Z'", "dd-MM-yyyy")
-                }.orEmpty()
+                }.orEmpty(),
             )
         } ?: MatchItem()
     }

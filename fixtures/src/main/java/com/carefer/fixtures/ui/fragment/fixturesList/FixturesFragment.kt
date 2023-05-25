@@ -22,6 +22,8 @@ class FixturesFragment :
 
     override val viewModel: FixturesViewModel by activityViewModels()
 
+    private val fixturesAdapter = FixturesAdapter(::onFavOnClicked)
+    private var favMatchesList: MutableList<String> = mutableListOf()
     override fun showLoading(show: Boolean, isShimmer: Boolean) {
         super.showLoading(show, isShimmer)
         fragmentHelper.handleShimmerLoading(show, isShimmer, binding)
@@ -37,7 +39,18 @@ class FixturesFragment :
         super.onViewCreated(view, savedInstanceState)
         viewModel.handelViewIntent()
         collectFixturesList()
-        viewModel.send(FixturesIntent.GetFixturesList("2021"))
+        collectFavoriteMatches()
+        viewModel.send(FixturesIntent.GetFavouredMatchesList)
+
+
+    }
+
+    private fun collectFavoriteMatches() {
+        viewModel.getFavouredMatchesListStateFlow.asLiveData().observe(viewLifecycleOwner) {
+            favMatchesList = it.toMutableList()
+            viewModel.send(FixturesIntent.GetFixturesList("2021"))
+
+        }
 
     }
 
@@ -45,7 +58,7 @@ class FixturesFragment :
         viewModel.getFixturesListStateFlow.asLiveData().observe(viewLifecycleOwner) {
             when (it) {
                 is ApiState.Success -> {
-                    setFixturesList(it.successData)
+                    setMatchesList(it.successData, favMatchesList)
                 }
 
                 else -> {}
@@ -53,15 +66,18 @@ class FixturesFragment :
         }
     }
 
-    private fun setFixturesList(fixturesList: List<MatchItem>) {
-        val fixturesAdapter = FixturesAdapter(::onFavOnClicked)
+    private fun setMatchesList(fixturesList: List<MatchItem>, favMatchesList: MutableList<String>) {
         binding.rvFixtures.adapter = fixturesAdapter
-        fixturesAdapter.submitList(fixturesList)
+        fragmentHelper.setMatchesFavourite(fixturesAdapter, fixturesList, favMatchesList)
         fragmentHelper.handleScrollToTodayItem(binding, fixturesList)
     }
 
     private fun onFavOnClicked(item: MatchItem) {
-
+        if (item.isFavorite) {
+            viewModel.send(FixturesIntent.SetMatchFavour(item.id.toString()))
+        } else {
+            viewModel.send(FixturesIntent.RemoveMatchFavour(item.id.toString()))
+        }
     }
 
 }

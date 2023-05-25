@@ -128,4 +128,18 @@ class FixturesFragmentHelper @Inject constructor() : BaseUiHelper() {
         return fixturesList.indexOfFirst { it.headerTitle == "Today" || it.headerTitle == "Tomorrow" }
 
     }
+
+    fun setMatchesFavourite(
+        fixturesAdapter: FixturesAdapter,
+        fixturesList: List<MatchItem>,
+        favMatches: List<String>?
+    ) {
+        fixturesList.forEach { remoteMatch ->
+            remoteMatch.isFavorite = favMatches?.contains(remoteMatch.id.toString()) == true
+        }
+
+        fixturesAdapter.submitList(fixturesList)
+
+
+    }
 }

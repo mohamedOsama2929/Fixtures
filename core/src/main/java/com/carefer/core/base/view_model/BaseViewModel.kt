@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.carefer.core.base.fragment.NetworkBaseFragment
 import com.carefer.core.domain.entities.base.ErrorModel
 import com.carefer.core.domain.entities.base.ErrorStatus
+import com.carefer.core.domain.usecase.base.CompleteBlock
 import com.carefer.core.domain.usecase.base.CompletionBlock
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -130,6 +131,18 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
                     ErrorStatus.NO_CONNECTION
                 )
             )
+        }
+    }
+
+
+    fun <T> callLocalApi(data: MutableStateFlow<T>, apiCall: (CompleteBlock<T>) -> Unit) {
+        apiCall.invoke {
+            onComplete {
+                data.value = it
+            }
+            onCancel {
+                _state.value = UiState.CancellationMessage(it.message ?: "")
+            }
         }
     }
 

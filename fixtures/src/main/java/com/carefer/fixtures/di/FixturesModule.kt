@@ -2,6 +2,8 @@ package com.carefer.fixtures.di
 
 import com.carefer.fixtures.data.repository.FixturesRepository
 import com.carefer.fixtures.data.repository.FixturesRepositoryImp
+import com.carefer.fixtures.data.source.local.FixturesLocalSource
+import com.carefer.fixtures.data.source.local.FixturesLocalSourceImpl
 import com.carefer.fixtures.data.source.remote.FixturesRemoteSource
 import com.carefer.fixtures.data.source.remote.FixturesRemoteSourceImpl
 import dagger.Binds
@@ -19,6 +21,11 @@ abstract class FixturesModule {
     abstract fun bindFixturesRepository(
         fixturesRepositoryImp: FixturesRepositoryImp
     ): FixturesRepository
+
+    @Binds
+    abstract fun bindFixtureLocalSource(
+        fixturesRemoteSourceImpl: FixturesLocalSourceImpl
+    ): FixturesLocalSource
 
     @Binds
     abstract fun bindFixtureRemoteSource(

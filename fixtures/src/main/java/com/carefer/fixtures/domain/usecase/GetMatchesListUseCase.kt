@@ -10,7 +10,7 @@ import com.carefer.fixtures.domain.entity.response.FixturesResponse
 import com.carefer.fixtures.domain.mapper.FixtureMapper
 import javax.inject.Inject
 
-class GetFixturesListUseCase @Inject constructor(
+class GetMatchesListUseCase @Inject constructor(
     errorUtil: CloudErrorMapper,
     private val fixturesRepository: FixturesRepository,
     private val mapper: FixtureMapper
@@ -18,7 +18,7 @@ class GetFixturesListUseCase @Inject constructor(
     errorUtil
 ) {
     public override suspend fun executeOnBackground(parameters: FixturesListQuery): FixturesResponse {
-        return fixturesRepository.getFixturesList(parameters)
+        return fixturesRepository.getMatchesList(parameters)
     }
 
     public override suspend fun convert(dto: FixturesResponse): List<MatchItem> {
