@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingStart="@dimen/x20dp"
+    android:paddingTop="@dimen/x10dp"
+    android:paddingEnd="@dimen/x20dp"
+    android:paddingBottom="@dimen/x10dp">
+
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="@dimen/x10dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cancel"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x24dp"
+        android:background="@drawable/cornered_bg"
+        android:backgroundTint="@color/side_menu_header_bg"
+        android:paddingBottom="@dimen/x17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btn_my_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x14dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:elevation="@dimen/x4dp"
+            android:fontFamily="@font/bold_font"
+            android:gravity="center"
+            android:text="@string/view_profile"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccentSecond"
+            android:textSize="@dimen/x11sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_department" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img_profile"
+            android:layout_width="@dimen/x48dp"
+            android:layout_height="@dimen/x48dp"
+            android:layout_marginTop="@dimen/x15dp"
+            android:layout_marginBottom="@dimen/x12dp"
+            android:background="@color/beige"
+            android:src="@drawable/ic_profile_dummy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_mutate_background="true"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold_font"
+            android:lineSpacingExtra="-3sp"
+            android:text="@string/mohammed_ali"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/x16sp"
+            app:layout_constraintEnd_toEndOf="@id/img_profile"
+            app:layout_constraintStart_toStartOf="@id/img_profile"
+            app:layout_constraintTop_toBottomOf="@id/img_profile" />
+
+        <TextView
+            android:id="@+id/tv_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x4dp"
+            android:fontFamily="@font/regular_font"
+            android:lineSpacingExtra="-7sp"
+            android:text="@string/software_developer"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/x12sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

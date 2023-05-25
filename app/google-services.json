@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "833539018808",
+    "firebase_url": "https://cerqel-89c71-default-rtdb.firebaseio.com",
+    "project_id": "cerqel-89c71",
+    "storage_bucket": "cerqel-89c71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833539018808:android:66af5d148d675c485d96cd",
+        "android_client_info": {
+          "package_name": "com.youxel.mcit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833539018808-dt0k9tr0fukm5k50sjq4uqqfio4eq284.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC63FNhtzeHSZzInaZT1AMSEXyxKP7KTzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833539018808-dt0k9tr0fukm5k50sjq4uqqfio4eq284.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833539018808:android:004cdb6df608b64c5d96cd",
+        "android_client_info": {
+          "package_name": "com.youxel.youxelhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833539018808-dt0k9tr0fukm5k50sjq4uqqfio4eq284.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC63FNhtzeHSZzInaZT1AMSEXyxKP7KTzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833539018808-dt0k9tr0fukm5k50sjq4uqqfio4eq284.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

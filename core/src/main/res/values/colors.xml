@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#13368E</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorPrimaryTransparent">#B31650ED</color>
+    <color name="colorPrimaryLight">#1750EE</color>
+    <color name="colorAccent">#01254c</color>
+    <color name="color_orgnization_item">#1650ED</color>
+    <color name="colorAccentSecond">#01254c</color>
+    <color name="colorAccentThird">#01254c</color>
+    <color name="colorTextDetails">#698097</color>
+    <color name="colorTextSide">#db5461</color>
+    <color name="colorClose">#db5461</color>
+    <color name="colorNotificationTint">#e5f3ff</color>
+    <color name="ColorViewLine">#e4ebf3</color>
+    <color name="ColorViewLine2">#CDD5DF</color>
+    <color name="ColorTasksDay">#3b5979</color>
+    <color name="ColorInactiveInbox">#bfccd8</color>
+    <color name="dimmed_txt">#B2B9BD</color>
+    <color name="colorBlackText">#030303</color>
+    <color name="colorBg">#F8FAFF</color>
+    <color name="colorSupport">#44C0B0</color>
+    <color name="colorTextNavyBlue">#14212E</color>
+
+    <color name="white_2">#f2f2f2</color>
+    <color name="separator_color_opaque">#5c3c3c43</color>
+    <color name="fav_dimmed">#dae4ea</color>
+    <color name="colorTextMore">#294266</color>
+    <color name="white">#fff</color>
+    <color name="bg_screens">#F0F4FF</color>
+    <color name="white_60_opacity">#99ffffff</color>
+    <color name="bg">#FAF8F8</color>
+    <color name="warm_purple">#712c81</color>
+    <color name="deep_lavender">#995db0</color>
+    <color name="slate_grey">#55565e</color>
+    <color name="grey">#979797</color>
+    <color name="light_green_2">#FFD9E9BF</color>
+    <color name="dark_grey">#23292f</color>
+    <color name="light_grey">#f7f9fd</color>
+    <color name="bg_gray">#f2f4f8</color>
+    <color name="black">#000</color>
+    <color name="dark">#FF23292F</color>
+    <color name="grey_4">#FF979797</color>
+    <color name="beige_3">#999999</color>
+    <color name="light_gray_2">#c1c1c1</color>
+    <color name="textColor">#23292f</color>
+    <color name="light_purple">#9575CD</color>
+    <color name="light_purple_trans">#859575CD</color>
+    <color name="close_pink">#f16b6b</color>
+    <color name="light_blue_green">#1da78b</color>
+    <color name="light_periwinkle">#dcdde5</color>
+    <color name="blue_grey">#868894</color>
+    <color name="charcoal_grey">#868894</color>
+    <color name="ocean_green">#49a487</color>
+    <color name="ocean_green_semi_trans">#3349A487</color>
+    <color name="light_gray">#9AD8D8D8</color>
+    <color name="dark_pink">#ed5454</color>
+    <color name="red">#ff0000</color>
+    <color name="dark_white">#4ae5e5e5</color>
+    <color name="light_green">#e1f0ea</color>
+    <color name="beige">#f5f5f5</color>
+    <color name="grey_2">#828282</color>
+    <color name="grey_3">#19729fc5</color>
+    <color name="beige_2">#f5f5f5</color>
+    <color name="beige_2_trans">#CCF5F5F5</color>
+    <color name="squash_light">#fcf5e5</color>
+    <color name="tint_light_gray">#9AF6F6F6</color>
+    <color name="in_progress">#E4BA4D</color>
+    <color name="closed">#2E97EF</color>
+    <color name="pending">#E26666</color>
+    <color name="open">#60BC37</color>
+    <color name="unread_item">#f2f9f6</color>
+    <color name="text_grey">#737373</color>
+
+    <color name="rejected_notification">#fef0f0</color>
+    <color name="rejected_notification_dark">#1AF16B6B</color>
+
+    <color name="approved_notification">#f2f9f6</color>
+    <color name="approved_notification_dark">#e1f1eb</color>
+
+    <color name="default_notification">#FFF</color>
+    <color name="default_notification_dark">#f7f9fd</color>
+    <color name="span_text_color">#118971</color>
+
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="pink_text_color">#01254c</color>
+    <color name="cyan">#5da9e9</color>
+    <color name="light_cyan">#99008CFF</color>
+    <color name="light_cyan_trans">#85008CFF</color>
+    <color name="tab_unselected_text_color">#868d95</color>
+    <color name="bg_tab_layout">#f7f9fd</color>
+    <color name="dark_gray_text_color">#51565b</color>
+
+    <color name="side_menu_header_bg">#f7f9fd</color>
+
+    <color name="blue">#5da9e9</color>
+    <color name="etBgColor">#F1F5F9</color>
+    <color name="etStrokeColor">#B0B9BE</color>
+    <color name="disabledButtonColor">#868d95</color>
+    <color name="notificationsCounterColor">#ffc107</color>
+    <color name="myCalenderItemColor">#2E97EF</color>
+    <color name="backgroundColor">#E5E5E5</color>
+    <color name="colorCommentsBg">#F0F4FF</color>
+
+</resources>

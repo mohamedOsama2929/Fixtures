@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="radius_dashboard">48dp</dimen>
+
+    <dimen name="toolbar_start_margin">@dimen/x4dp</dimen>
+
+    <dimen name="viewpager_next_item_visible">0dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">0dp</dimen>
+    <dimen name="viewpager_current_item_decoration_margin">0dp</dimen>
+
+</resources>

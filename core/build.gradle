@@ -1,0 +1,133 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion(Android.compileSdkVersion)
+
+    defaultConfig {
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        // dev
+        def apiKey = "054faa44f747441d91cdecac3491ec96"
+
+        release {
+
+            buildConfigField "String", "API_KEY", "\"${apiKey}\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField "String", "API_KEY", "\"${apiKey}\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //kotlin
+    implementation(Kotlin.kotlin_stdlib_jdk)
+    implementation(Kotlin.kotlin_stdlib)
+    implementation(Kotlin.core_ktx)
+    implementation(Kotlin.kotlin_reflect)
+    //Androidx
+    implementation(Androidx.appcompat)
+    implementation(Androidx.fragment)
+    implementation(Androidx.cardview)
+    implementation(Androidx.recyclerview)
+    implementation(Androidx.multidex)
+    implementation(Androidx.legacy)
+    kapt(Androidx.appcompat)
+    implementation(Androidx.lifecycle_reactivestreams)
+    implementation(Androidx.lifecycle_common)
+    implementation(Androidx.lifecycle_runtime)
+    implementation(Androidx.lifecycle_livedata)
+    implementation(Androidx.constraintlayout)
+    implementation(Androidx.navigation_fragment)
+    implementation(Androidx.navigation_ui)
+    implementation(Androidx.room_runtime)
+    implementation(Androidx.room_ktx)
+    kapt(Androidx.room_compiler_kapt)
+    implementation(Androidx.lifecycle_viewmodel)
+    implementation(Androidx.activityKtx)
+    implementation(Androidx.fragmentKtx)
+    //Material
+    implementation(Material.material)
+    //Retrofit
+    implementation(Retrofit.retrofit2)
+    implementation(Retrofit.okhttp3)
+    implementation(Retrofit.converter_gson)
+    implementation(Retrofit.logging_interceptor)
+    implementation(Retrofit.chunk)
+    //Gson
+    implementation(Gson.gson)
+    //coroutines
+    implementation(Coroutines.android)
+    implementation(Coroutines.core)
+    //glide
+    implementation(Glide.glide)
+    kapt(Glide.glideProcess)
+    // coil
+    implementation(Lib.coil)
+    //rounded image view
+    implementation(Lib.roundedImageView)
+    //Hilt
+    implementation(Hilt.hilt_android)
+    implementation(Hilt.viewmodel)
+    kapt(Hilt.kapt_hilt_android)
+    kapt(Hilt.kapt_hilt_compiler)
+    //lottie
+    implementation(Design.lottie)
+    // sharedPreference
+    implementation(SharedPreference.hawk)
+
+    // Local Unit Tests
+    implementation(TestLib.androidxTestCore)
+    testImplementation(TestLib.junit)
+    testImplementation(TestLib.androidxTestCoreKtx)
+    testImplementation(TestLib.hamcrest)
+    testImplementation(TestLib.core_testing)
+    testImplementation(TestLib.robolectric)
+    testImplementation(TestLib.truth)
+    testImplementation(TestLib.mockito_core)
+    testImplementation(TestLib.coroutinesTest)
+
+    // Instrumented Unit Tests
+    androidTestImplementation(TestLib.junit)
+    androidTestImplementation(TestLib.mockito_dexmaker)
+    androidTestImplementation(TestLib.coroutinesTest)
+    androidTestImplementation(TestLib.core_testing)
+    androidTestImplementation(TestLib.truth)
+    androidTestImplementation(TestLib.testExt)
+    androidTestImplementation(TestLib.espresso_core)
+    androidTestImplementation(TestLib.mockito_core)
+    androidTestImplementation(TestLib.hilt_testing)
+    androidTestImplementation(TestLib.espresso_contrib)
+    debugImplementation(TestLib.fragmentTesting)
+    kaptAndroidTest(Hilt.kapt_hilt_android)
+}

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:paddingBottom="@dimen/x16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llBackGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
+                android:layout_marginEnd="@dimen/x5dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:padding="@dimen/x10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/ivImageBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/x22dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_back_arrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/x8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/regular_font"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x16sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/llBackGroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/llBackGroup"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/x8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/regular_font"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x16sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/llBackGroup"
+                app:layout_constraintStart_toEndOf="@id/img_profile"
+                app:layout_constraintTop_toTopOf="@id/llBackGroup"
+                tools:text="good morning \n ahmed" />
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="@dimen/x24dp"
+                android:layout_height="@dimen/x20sp"
+                android:layout_marginEnd="@dimen/x16dp"
+                android:src="@drawable/ic_search_toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgNotification"
+                android:layout_width="@dimen/x24dp"
+                android:layout_height="@dimen/x24dp"
+                android:layout_marginEnd="@dimen/x16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_search"
+                app:layout_constraintEnd_toStartOf="@id/img_search"
+                app:layout_constraintTop_toTopOf="@+id/img_search"
+                app:srcCompat="@drawable/ic_notification_toolbar" />
+
+            <ImageView
+                android:id="@+id/imgCalnder"
+                android:layout_width="@dimen/x24dp"
+                android:layout_height="@dimen/x24dp"
+                android:layout_marginEnd="@dimen/x16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_search"
+                app:layout_constraintEnd_toStartOf="@id/imgNotification"
+                app:layout_constraintTop_toTopOf="@+id/img_search"
+                app:srcCompat="@drawable/ic_calnder_toolbar" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_profile"
+                android:layout_width="@dimen/x44dp"
+                android:layout_height="@dimen/x44dp"
+                android:layout_marginStart="@dimen/x12dp"
+                android:layout_marginTop="@dimen/x15dp"
+                android:layout_marginEnd="@dimen/x12dp"
+                android:layout_marginBottom="@dimen/x12dp"
+                android:src="@drawable/ic_profile_dummy"
+                app:layout_constraintBottom_toBottomOf="@id/llBackGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/llBackGroup"
+                app:riv_corner_radius="@dimen/x60dp"
+                app:riv_mutate_background="true"
+                tools:visibility="visible" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <fragment
+        android:id="@+id/common_nav_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/watch_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
