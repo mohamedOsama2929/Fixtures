@@ -5,12 +5,16 @@ import android.util.Log
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.carefer.core.base.adapter.diffutilsAdapter.BaseRecyclerAdapter
+import com.carefer.fixtures.R
 import com.carefer.fixtures.databinding.ItemFixtureBinding
 import com.carefer.fixtures.domain.entity.local.MatchItem
 import com.carefer.fixtures.domain.entity.local.MatchStatus
 
 
-class FixturesAdapter :
+class FixturesAdapter(
+    private var onFavoriteImageClickListener: (MatchItem) -> Unit,
+
+    ) :
     BaseRecyclerAdapter<ItemFixtureBinding, MatchItem>(
         ItemFixtureBinding::inflate, { oldItem, newItem -> oldItem.id == newItem.id }) {
 
@@ -29,6 +33,20 @@ class FixturesAdapter :
             tvTime.text = item.matchTime
             tvScore.isVisible = item.matchStatus == MatchStatus.FINISHED
             tvTime.isVisible = item.matchStatus == MatchStatus.SCHEDULED
+
+            if (item.isFavorite) {
+                ivFavorite.setImageResource(R.drawable.ic_fav_transparent)
+                ivFavorite.setColorFilter(android.R.color.transparent)
+            } else {
+                ivFavorite.setImageResource(R.drawable.ic_favorite)
+                ivFavorite.colorFilter = null
+            }
+
+            ivFavorite.setOnClickListener {
+                item.isFavorite = item.isFavorite.not()
+                onFavoriteImageClickListener(item)
+                notifyItemChanged(position)
+            }
 
             if (position == 0) {
                 showStickyHeaderTitle(item.headerTitle, tvStickyHeader)

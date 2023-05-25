@@ -8,7 +8,7 @@ data class MatchItem(
     val score: String = "",
     val homeTeam: String = "",
     val matchTime: String = "",
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
     val matchStatus: MatchStatus = MatchStatus.SCHEDULED,
     val id: Int = 0,
     val status: String = "",

@@ -54,10 +54,14 @@ class FixturesFragment :
     }
 
     private fun setFixturesList(fixturesList: List<MatchItem>) {
-        val fixturesAdapter = FixturesAdapter()
+        val fixturesAdapter = FixturesAdapter(::onFavOnClicked)
         binding.rvFixtures.adapter = fixturesAdapter
         fixturesAdapter.submitList(fixturesList)
         fragmentHelper.handleScrollToTodayItem(binding, fixturesList)
+    }
+
+    private fun onFavOnClicked(item: MatchItem) {
+
     }
 
 }
