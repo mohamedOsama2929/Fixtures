@@ -41,7 +41,6 @@ interface ToolbarListener {
 
     fun loadUserProfileImage(userProfileImageUrl: String)
 
-    fun showProfileImage()
 
 
     fun hideProfileImage()

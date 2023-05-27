@@ -2,7 +2,7 @@ package com.carefer.matches.ui.fragment.matchesList
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import com.carefer.core.base.fragment.BaseFragment
 import com.carefer.core.base.view_model.ApiState
@@ -20,7 +20,7 @@ class MatchesFragment :
         FragmentMatchesBinding::inflate
     ) {
 
-    override val viewModel: MatchesViewModel by activityViewModels()
+    override val viewModel: MatchesViewModel by viewModels()
 
     private val matchesAdapter = MatchesAdapter(::onFavOnClicked)
     private var favMatchesList: MutableList<String> = mutableListOf()
@@ -48,19 +48,16 @@ class MatchesFragment :
 
     private fun initViews() {
         binding.switchUnReadOnly.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                matchesAdapter.apply {
-                    clear()
-                    submitList(fragmentHelper.getFavMatches(matchesList))
-                }
 
+            val matchesList = if (isChecked) {
+                fragmentHelper.getFavMatches(matchesList)
             } else {
-                matchesAdapter.apply {
-                    clear()
-                    submitList(matchesList)
-                    fragmentHelper.handleScrollToTodayItem(binding, matchesList)
-                }
-
+                matchesList
+            }
+            matchesAdapter.apply {
+                clear()
+                submitList(matchesList)
+                matchesList?.toList()?.let { fragmentHelper.handleScrollToTodayItem(binding, it) }
             }
         }
     }
@@ -87,10 +84,10 @@ class MatchesFragment :
         }
     }
 
-    private fun setMatchesList(fixturesList: List<MatchItem>, favMatchesList: MutableList<String>) {
-        binding.rvFixtures.adapter = matchesAdapter
-        fragmentHelper.setMatchesFavourite(matchesAdapter, fixturesList, favMatchesList)
-        fragmentHelper.handleScrollToTodayItem(binding, fixturesList)
+    private fun setMatchesList(matchesList: List<MatchItem>, favMatchesList: MutableList<String>) {
+        binding.rvMatches.adapter = matchesAdapter
+        fragmentHelper.setMatchesFavourite(matchesAdapter, matchesList, favMatchesList)
+        fragmentHelper.handleScrollToTodayItem(binding, matchesList)
     }
 
     private fun onFavOnClicked(item: MatchItem) {

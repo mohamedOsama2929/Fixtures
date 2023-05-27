@@ -99,6 +99,9 @@ dependencies {
     testImplementation(TestLib.androidxTestCoreKtx)
     testImplementation(TestLib.mockito_core)
     testImplementation(TestLib.coroutinesTest)
+    testImplementation(TestLib.junit_jupiter_api)
+    testImplementation(TestLib.junit_jupiter_params)
+    testImplementation(TestLib.junit_jupiter_engine)
     // Instrumented Unit Tests
     androidTestImplementation(TestLib.junit)
     androidTestImplementation(TestLib.coroutinesTest)

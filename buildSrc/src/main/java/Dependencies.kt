@@ -96,7 +96,7 @@ object Versions {
 
 
 object Android {
-    val applicationId = "com.youxel.mcit"
+    val applicationId = "com.carefer.task"
     val compileSdkVersion = 32
     val buildToolsVersion = "32.0.0"
     val minSdkVersion = 23

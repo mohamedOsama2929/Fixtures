@@ -10,14 +10,12 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.carefer.core.R
-import com.carefer.core.base.activity.BottomNavListener
 import com.carefer.core.base.activity.ToolbarListener
 import com.carefer.core.base.view_model.BaseViewModel
 import com.carefer.core.base.view_model.UiState
 import com.carefer.core.data.local.StorageManager
 import com.carefer.core.domain.entities.base.ErrorModel
 import com.carefer.core.domain.entities.base.ErrorStatus
-import com.carefer.core.domain.entities.side_menu.SideMenuEnum
 import com.carefer.core.utils.LoadingListener
 import com.carefer.core.utils.hideKeyBoardOutSideTap
 import com.carefer.core.utils.updateStatusBarColor
@@ -47,12 +45,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
 
     protected var toolbarListener: ToolbarListener? = null
 
-    private var bottomNavListener: BottomNavListener? = null
 
     // if null back btn will be displayed
     // otherwise menu icon will be displayed and this item will be selected when open side menu
-    open var currentSideMenuItem: SideMenuEnum? = null
-
     @Inject
     lateinit var storageManager: StorageManager
 
@@ -94,9 +89,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
         toolbarListener?.hideActivityToolbar()
     }
 
-    fun showImageProfile() {
-        toolbarListener?.showProfileImage()
-    }
+
 
     fun hideImageProfile() {
         toolbarListener?.hideProfileImage()
@@ -108,7 +101,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
 
     override fun onDestroyView() {
         super.onDestroyView()
-        showLoading(false, false)
+        showLoading(show = false, isShimmer = false)
     }
 
     open fun showLoading(show: Boolean, isShimmer: Boolean = false) {
@@ -121,7 +114,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
         context.let {
             if (it is LoadingListener) mLoader = it
             if (it is ToolbarListener) toolbarListener = it
-            if (it is BottomNavListener) bottomNavListener = it
         }
     }
 
@@ -129,7 +121,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
         super.onDetach()
         mLoader = null
         toolbarListener = null
-        bottomNavListener = null
         _binding = null
     }
 
@@ -212,7 +203,4 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel, HelperClass : 
         view.hideKeyBoardOutSideTap()
     }
 
-    fun toggleBottomNav(isVisible: Boolean) {
-        bottomNavListener?.hideBottomNavListener?.value = isVisible
-    }
 }

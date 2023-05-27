@@ -1,6 +1,5 @@
 package com.carefer.core.base.fragment
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.carefer.core.base.dialog.BaseNetworkingDialog
 import com.carefer.core.utils.network.ConnectivityProvider
@@ -38,16 +37,15 @@ open class NetworkBaseFragment : Fragment(), ConnectivityProvider.ConnectivitySt
 
     override fun onNetworkStateChange(state: ConnectivityProvider.NetworkState) {
         val hasInternet = NetworkUtils.isNetworkConnected(state)
-        if (!hasInternet) {
+        isNetworkConnected = if (!hasInternet) {
             baseNetworkingDialog.showDialog(
                 requireContext(),
                 com.carefer.core.domain.entities.base.ErrorStatus.NO_CONNECTION
             )
-            isNetworkConnected = false
+            false
         } else {
             if (baseNetworkingDialog.isShown) baseNetworkingDialog.dismiss()
-            isNetworkConnected = true
+            true
         }
-        Log.d(TAG, "Is Network connected: $hasInternet")
     }
 }

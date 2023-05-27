@@ -3,18 +3,20 @@ package com.carefer.matches.ui.fragment.matchesList
 import androidx.core.view.isVisible
 import com.carefer.core.base.fragment.BaseUiHelper
 import com.carefer.matches.databinding.FragmentMatchesBinding
+import com.carefer.matches.domain.entity.local.Days
 import com.carefer.matches.domain.entity.local.MatchItem
 import javax.inject.Inject
 
 class MatchesFragmentHelper @Inject constructor() : BaseUiHelper() {
 
+    val daysList = listOf(Days.TODAY.name, Days.TOMORROW.name)
     fun handleShimmerLoading(
         show: Boolean,
         isShimmer: Boolean,
         binding: FragmentMatchesBinding
     ) {
         if (isShimmer) {
-            binding.rvFixtures.isVisible = !show
+            binding.rvMatches.isVisible = !show
             binding.shimmerLayout.root.isVisible = show
             if (show) binding.shimmerLayout.root.startShimmerAnimation()
         }
@@ -22,28 +24,24 @@ class MatchesFragmentHelper @Inject constructor() : BaseUiHelper() {
 
     fun handleScrollToTodayItem(
         binding: FragmentMatchesBinding,
-        fixturesList: List<MatchItem>,
+        matchesList: List<MatchItem>,
     ) {
-        binding.rvFixtures.scrollToPosition(getPositionOfTodayItem(fixturesList))
+        binding.rvMatches.scrollToPosition(getPositionOfTodayItem(matchesList))
     }
 
-    private fun getPositionOfTodayItem(fixturesList: List<MatchItem>): Int {
-        return fixturesList.indexOfFirst { it.headerTitle == "Today" || it.headerTitle == "Tomorrow" }
-
+    private fun getPositionOfTodayItem(matchesList: List<MatchItem>): Int {
+        return matchesList.indexOfFirst { it.headerTitle in daysList }
     }
 
     fun setMatchesFavourite(
         matchesAdapter: MatchesAdapter,
-        fixturesList: List<MatchItem>,
+        matchesList: List<MatchItem>,
         favMatches: List<String>?
     ) {
-        fixturesList.forEach { remoteMatch ->
-            remoteMatch.isFavorite = favMatches?.contains(remoteMatch.id.toString()) == true
+        val updatedList = matchesList.map { remoteMatch ->
+            remoteMatch.copy(isFavorite = favMatches?.contains(remoteMatch.id.toString()) == true)
         }
-
-        matchesAdapter.submitList(fixturesList)
-
-
+        matchesAdapter.submitList(updatedList)
     }
 
     fun getFavMatches(matchesList: MutableList<MatchItem>): MutableList<MatchItem>? {

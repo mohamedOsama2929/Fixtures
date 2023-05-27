@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:833539018808:android:66af5d148d675c485d96cd",
         "android_client_info": {
-          "package_name": "com.youxel.mcit"
+          "package_name": "com.carefer.task"
         }
       },
       "oauth_client": [
@@ -39,7 +39,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:833539018808:android:004cdb6df608b64c5d96cd",
         "android_client_info": {
-          "package_name": "com.youxel.youxelhub"
+          "package_name": "com.carefer.task"
         }
       },
       "oauth_client": [

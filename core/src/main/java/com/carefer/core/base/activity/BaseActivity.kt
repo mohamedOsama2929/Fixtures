@@ -16,8 +16,7 @@ import com.carefer.core.utils.LoadingListener
 import com.carefer.core.utils.loadImg
 import javax.inject.Inject
 
-abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListener,
-    SideMenuListener {
+abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListener {
     private val TAG = BaseActivity::class.java.simpleName
 
     private lateinit var navFragment: NavHostFragment
@@ -60,10 +59,6 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
             _binding.llBackGroup, _binding.ivImageBack -> {
                 onBackPressed()
             }
-
-            _binding.imgProfile -> {
-                onMyProfileClicked()
-            }
         }
     }
 
@@ -90,11 +85,6 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
 
     override fun hideProfileImage() {
         _binding.imgProfile.visibility = View.GONE
-    }
-
-
-    override fun showProfileImage() {
-        _binding.imgProfile.visibility = View.VISIBLE
     }
 
     override fun loadUserProfileImage(userProfileImageUrl: String) {
@@ -133,28 +123,8 @@ abstract class BaseActivity : AppCompatActivity(), LoadingListener, ToolbarListe
         }
     }
 
-    override fun onMyProfileClicked() {
-        closeSideMenu()
-        openUserProfile()
-    }
 
     override fun openUserProfile() {
-    }
-
-    override fun onSideMenuItemSelected(item: SideMenuEnum) {
-        closeSideMenu()
-
-        when (item) {
-            SideMenuEnum.MyInbox -> {}
-            SideMenuEnum.MyReporting -> {}
-            SideMenuEnum.Notifications -> {}
-            SideMenuEnum.FavoriteListService -> {}
-            SideMenuEnum.Polls -> {}
-            else -> {}
-        }
-    }
-
-    override fun closeSideMenu() {
     }
 
     fun setFragmentDestination(@IdRes resId: Int, bundle: Bundle?) =

@@ -5,6 +5,7 @@ import android.text.format.DateUtils
 import com.carefer.core.domain.usecase.base.ModelMapper
 import com.carefer.core.domain.utils.changeDateFormat
 import com.carefer.core.domain.utils.convertDateStringToMilliSeconds
+import com.carefer.matches.domain.entity.local.Days
 import com.carefer.matches.domain.entity.local.MatchItem
 import com.carefer.matches.domain.entity.local.MatchStatus
 import com.carefer.matches.domain.entity.response.RemoteMatchesItem
@@ -49,9 +50,9 @@ class MatchMapper @Inject constructor() :
             "yyyy-MM-dd'T'HH:mm:ss'Z'"
         )
         return when {
-            isYesterday(dateMillSecond) -> "Yesterday"
-            DateUtils.isToday(dateMillSecond) -> "Today"
-            isTomorrow(dateMillSecond) -> "Tomorrow"
+            isYesterday(dateMillSecond) -> Days.YESTERDAY.name
+            DateUtils.isToday(dateMillSecond) -> Days.TODAY.name
+            isTomorrow(dateMillSecond) -> Days.TOMORROW.name
             else -> changeDateFormat(date, "yyyy-MM-dd'T'HH:mm:ss'Z'", "dd-MM-yyyy")
         }
     }

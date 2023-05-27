@@ -55,12 +55,6 @@
         <item name="android:paddingBottom">0dp</item>
     </style>
 
-
-    <style name="dialog_animation">
-        <item name="android:windowEnterAnimation">@anim/slide_up_with_fade_in</item>
-        <item name="android:windowExitAnimation">@anim/slide_down_with_fade_out</item>
-    </style>
-
     <style name="errorTextAppearance">
         <item name="android:textSize">@dimen/x14sp</item>
         <item name="android:fontFamily">@font/regular_font</item>

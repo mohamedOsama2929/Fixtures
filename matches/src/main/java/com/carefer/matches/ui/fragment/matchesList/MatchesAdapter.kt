@@ -46,22 +46,21 @@ class MatchesAdapter(
                 notifyItemChanged(position)
             }
 
-            if (position == 0) {
-                showStickyHeaderTitle(item.headerTitle, tvStickyHeader)
-            } else if ((item.headerTitle != currentList[position - 1].headerTitle)) {
-                showStickyHeaderTitle(item.headerTitle, tvStickyHeader)
-            } else {
-                tvStickyHeader.isVisible = false
-            }
+            showStickyHeaderTitle(item.headerTitle, tvStickyHeader, position)
+
         }
     }
 
     private fun showStickyHeaderTitle(
         headerTitle: String,
-        tvHeader: TextView
+        tvHeader: TextView,
+        position: Int
     ) {
-        tvHeader.text = headerTitle
-        tvHeader.isVisible = true
+        with(tvHeader) {
+            text = headerTitle
+            isVisible = position == 0 || headerTitle != currentList[position - 1].headerTitle
+        }
     }
+
 
 }
