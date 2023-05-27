@@ -40,7 +40,7 @@ To build and run the application, you need the following:
 - Gradle 
 
 ## Getting Started
-- Clone the repository: git clone https://github.com/mohamedOsama2929/Fixtures
+- Clone the repository: git clone https://github.com/mohamedOsama2929/PL-Matches
 - Open the project in Android Studio.
 - Build the project.
 - Run the application on an emulator or physical device.
