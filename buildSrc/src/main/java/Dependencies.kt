@@ -92,6 +92,7 @@ object Versions {
     val truth_version = "1.1.2"
     val hilt_testing_version = "2.28-alpha"
     val coil_version = "2.2.1"
+    val mockk = "1.12.0"
 }
 
 
@@ -264,6 +265,9 @@ object TestLib {
         "org.junit.jupiter:junit-jupiter-api:${Versions.junit_jupiter_version}"
     val junit_jupiter_engine =
         "org.junit.jupiter:junit-jupiter-api:${Versions.junit_jupiter_version}"
+    val junit_jupiter_platform =
+        "org.junit.platform:junit-platform-gradle-plugin:${Versions.junit_jupiter_version}"
+
 
     // espresso
     val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso}"
@@ -271,7 +275,11 @@ object TestLib {
     val androidx_espresso_idling_resource =
         "androidx.test.espresso:espresso-idling-resource:${Versions.androidx_espresso_idling_resource}"
 
-    val mockk = "io.mockk:mockk-android:${Versions.mockk_version}"
+    val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+
+
+    val mockk = "io.mockk:mockk:${Versions.mockk}"
+
 
     val hamcrest = "org.hamcrest:hamcrest-all:${Versions.hamcrest_version}"
     val robolectric = "org.robolectric:robolectric:${Versions.robolectric_version}"

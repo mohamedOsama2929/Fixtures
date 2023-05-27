@@ -8,7 +8,7 @@ import javax.inject.Inject
 class SetMatchFavourUseCase @Inject constructor(
     private val matchesRepository: MatchesRepository,
 ) : LocalUseCase<String, Unit>() {
-    override suspend fun executeOnBackground(parameters: String) {
+    public override suspend fun executeOnBackground(parameters: String) {
         return matchesRepository.setMatchFavour(parameters)
     }
 }

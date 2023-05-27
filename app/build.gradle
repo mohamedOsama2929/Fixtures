@@ -52,6 +52,11 @@ android {
         jvmTarget = "1.8"
     }
 
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {

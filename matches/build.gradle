@@ -16,6 +16,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        testApplicationId = "com.carefer.task"
+        testHandleProfiling = true
+        testFunctionalTest = true
+
     }
     buildTypes {
         release {
@@ -100,8 +104,8 @@ dependencies {
     testImplementation(TestLib.mockito_core)
     testImplementation(TestLib.coroutinesTest)
     testImplementation(TestLib.junit_jupiter_api)
-    testImplementation(TestLib.junit_jupiter_params)
-    testImplementation(TestLib.junit_jupiter_engine)
+    testImplementation(TestLib.mockk)
+    testImplementation(TestLib.mockkAndroid)
     // Instrumented Unit Tests
     androidTestImplementation(TestLib.junit)
     androidTestImplementation(TestLib.coroutinesTest)
@@ -113,5 +117,9 @@ dependencies {
     kaptAndroidTest(Hilt.kapt_hilt_android)
 
     implementation(Shimmer.shimmer)
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.3.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.3.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.3.2"
 
 }

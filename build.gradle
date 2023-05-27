@@ -24,6 +24,8 @@ buildscript {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_plugin"
         classpath 'com.google.gms:google-services:4.3.13'
         classpath "de.mannodermaus.gradle.plugins:android-junit5:$junit5"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.6.1.0"
+
     }
 }
 
@@ -49,7 +51,6 @@ allprojects {
             }
         }
     }
-
 }
 
 task clean(type: Delete) {

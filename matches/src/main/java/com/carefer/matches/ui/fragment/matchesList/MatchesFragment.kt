@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import com.carefer.core.base.fragment.BaseFragment
-import com.carefer.core.base.view_model.ApiState
 import com.carefer.matches.R
 import com.carefer.matches.databinding.FragmentMatchesBinding
 import com.carefer.matches.domain.entity.local.MatchItem
@@ -73,14 +72,10 @@ class MatchesFragment :
 
     private fun collectMatchesList() {
         viewModel.getMatchesListStateFlow.asLiveData().observe(viewLifecycleOwner) {
-            when (it) {
-                is ApiState.Success -> {
-                    setMatchesList(it.successData, favMatchesList)
-                    matchesList = it.successData.toMutableList()
-                }
+            setMatchesList(it, favMatchesList)
+            matchesList = it.toMutableList()
 
-                else -> {}
-            }
+
         }
     }
 

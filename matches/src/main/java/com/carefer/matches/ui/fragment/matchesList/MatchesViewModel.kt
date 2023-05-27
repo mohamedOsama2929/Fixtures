@@ -3,7 +3,6 @@ package com.carefer.matches.ui.fragment.matchesList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.carefer.core.base.view_model.ApiState
 import com.carefer.core.base.view_model.BaseViewModel
 import com.carefer.matches.domain.entity.local.MatchItem
 import com.carefer.matches.domain.entity.query.MatchesListQuery
@@ -27,9 +26,9 @@ class MatchesViewModel @Inject constructor(
     private val setMatchUnFavourUseCase: SetMatchUnFavourUseCase
 ) : BaseViewModel() {
 
-    private val fixturesListIntent = MutableLiveData<MatchesIntent>()
+    private val matchesListIntent = MutableLiveData<MatchesIntent>()
 
-    private val fixturesListObserver = Observer<MatchesIntent> {
+    private val matchesListObserver = Observer<MatchesIntent> {
         when (it) {
 
             is MatchesIntent.GetMatchesList -> {
@@ -51,23 +50,31 @@ class MatchesViewModel @Inject constructor(
     }
 
     internal fun send(intentType: MatchesIntent) {
-        fixturesListIntent.value = intentType
+        matchesListIntent.value = intentType
     }
 
     override fun handelViewIntent() {
         viewModelScope.launch {
-            fixturesListIntent.observeForever(fixturesListObserver)
+            matchesListIntent.observeForever(matchesListObserver)
         }
     }
 
+    fun setMatchesListStateFlow(matchesList: List<MatchItem>) {
+        _getMatchesListStateFlow.value = matchesList
+    }
+
+    fun setFavourMatchesListStateFlow(matchesList: List<String>) {
+        _getFavouredMatchesListStateFlow.value = matchesList
+    }
+
     private val _getMatchesListStateFlow =
-        MutableStateFlow<ApiState<List<MatchItem>>>(ApiState.Idle)
-    val getMatchesListStateFlow: StateFlow<ApiState<List<MatchItem>>>
+        MutableStateFlow<List<MatchItem>>(listOf())
+    val getMatchesListStateFlow: StateFlow<List<MatchItem>>
         get() = _getMatchesListStateFlow
 
-    private fun getMatchesList(id: String) {
-        callApiWithApiState(_getMatchesListStateFlow, isShimmer = true) {
-            getMatchesListUseCase.executeApiState(
+    fun getMatchesList(id: String) {
+        callApi(_getMatchesListStateFlow, isShimmer = true) {
+            getMatchesListUseCase.execute(
                 MatchesListQuery(id),
                 it
             )
@@ -129,6 +136,6 @@ class MatchesViewModel @Inject constructor(
 
     override fun reset() {
         super.reset()
-        fixturesListIntent.removeObserver(fixturesListObserver)
+        matchesListIntent.removeObserver(matchesListObserver)
     }
 }

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetFavouredMatchesListUseCase @Inject constructor(
     private val matchesRepository: MatchesRepository,
 ) : LocalUseCase<Unit, List<String>>() {
-    override suspend fun executeOnBackground(parameters: Unit): List<String> {
+    public override suspend fun executeOnBackground(parameters: Unit): List<String> {
         return matchesRepository.getFavouredMatchesList()
     }
 }

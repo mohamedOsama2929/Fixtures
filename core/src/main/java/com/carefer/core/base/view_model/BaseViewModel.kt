@@ -35,11 +35,15 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
         _state.value = UiState.CancellationMessage(cancellationException.message ?: "")
     }
 
-    fun <T> callApi(data: MutableStateFlow<T>, apiCall: (CompletionBlock<T>) -> Unit) {
+    fun <T> callApi(
+        data: MutableStateFlow<T>,
+        isShimmer: Boolean = false,
+        apiCall: (CompletionBlock<T>) -> Unit
+    ) {
         if (NetworkBaseFragment.isNetworkConnected) {
             apiCall.invoke {
                 isLoading {
-                    _state.value = UiState.Loading(it)
+                    _state.value = UiState.Loading(it, isShimmer)
                 }
 
                 onComplete {
